@@ -1,0 +1,39 @@
+import scrapy
+from scrapy.contrib.loader import ItemLoader
+from indeed_model import IndeedModel
+
+class IndeedSpider(scrapy.Spider):
+    name = "indeed"
+    allowed_domains = ["indeed.com"]
+    start_urls = [
+	"http://www.indeed.com/jobs?q=software+engineer&l="
+    ]
+
+    def parse(self, response):
+        #filename = response.url.split("/")[-2] + '.html'
+        #with open(filename, 'wb') as f:
+            #f.write(response.body)
+	#l = ItemLoader(item=IndeedModel(), response=response)
+        #l.add_xpath('company', '//span[@class="company"]/text().extract()')
+    	#l.add_xpath('location', '//span[@class="location"]')
+    	#l.add_xpath('summary', '//span[@class="summary"]')
+	#l.add_xpath('date','//span[@class="date"]')
+	#l.add_xpath('jobTitle','//span[@data-tn-element="jobTitle"]')
+    	#return l.load_item()
+	#listings = response.xpath('//div[contains(@class,"row  result")]/text()')
+	listings = response.xpath('//div[contains(@class,"result")/text()]');
+	for l in listings:
+		print l
+
+	#for sel in response.xpath('//div[contains(@class,"row  result")]/text()'):
+	    #print "--------------------------------------------\n"
+	    #print sel
+	    #print "--------------------------------------------\n"
+            #item = IndeedModel()
+            #item['company'] = sel.xpath('span[@class="company"]/text()').extract()
+            #item['location'] = sel.xpath('span[@class="location"]').extract()
+            #item['summary'] = sel.xpath('span[@class="summary"]').extract()
+	    #item['date'] = sel.xpath('span[@class="date"]').extract()
+	    #item['jobTitle'] = sel.xpath('span[contains(@class,"jobtitle")]').extract()
+	    #print item['company']
+            #yield item
