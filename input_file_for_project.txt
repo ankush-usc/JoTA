@@ -1,0 +1,5 @@
+Sunnyvale	NetApp	C,C++,Kernel Debugging	Jun 11	MTS2	<link>
+Sunnyvale	NetApp	C, file systems	Jun 12	MTS3	<link>
+SanFrancisco	NetApp	C, WAFL basics	Aug 18	MTS3	<link>
+RTP	NetApp	C,Java	Nov 12	MTS1	<link>	
+SanFrancisco	DOcker	C, Python, Django	Nov 23	MTS2	<link>
