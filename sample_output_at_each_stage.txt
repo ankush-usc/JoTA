@@ -19,7 +19,6 @@ C
 file systems
 C
 C++
-Kernel Debugging
 
 Output from reducer:
 
