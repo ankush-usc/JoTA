@@ -1,4 +1,5 @@
 __author__ = 'meerapatil'
+import webbrowser
 f = open('helloworld.html','w')
 file=open('myInput.txt','r')
 message = """<!DOCTYPE html>
@@ -50,3 +51,6 @@ message = """</tbody>
 """
 f.write(message)
 f.close()
+
+filename = 'file:///Users/meerapatil/JoTA/' + 'helloworld.html'
+webbrowser.open_new_tab(filename)
