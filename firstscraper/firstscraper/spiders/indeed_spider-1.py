@@ -5,6 +5,7 @@ import _mysql
 import sys
 
 
+
 class IndeedSpider(scrapy.Spider):
     name = "indeed"
     allowed_domains = ["indeed.com"]
@@ -69,6 +70,30 @@ class IndeedSpider(scrapy.Spider):
                 nextlink = "http://www.indeed.com" + l.xpath('@href').extract()[0]
                 print nextlink
         return scrapy.http.Request(nextlink, callback=self.parse)
+
+    file = open("jobscloud.txt", "w")
+
+
+
+
+    try:
+        con = _mysql.connect('localhost', '', '', 'testdb')
+        query = "SELECT * FROM jota INTO OUTFILE \'/Users/meerapatil/jobscloud.txt\';"
+        con.query(query)
+
+
+
+    except _mysql.Error, e:
+        print "Error %d: %s" % (e.args[0], e.args[1])
+        pass
+
+    finally:
+        if con:
+            con.close()
+
+
+
+
 
 
 
