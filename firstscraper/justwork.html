@@ -1,22 +1,39 @@
-<!DOCTYPE html>
 <html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <head>
+       <title>JoTA</title>
+	   <meta charset="utf-8">
+	   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	   <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>  
+	   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" />
+	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+        
 <script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $.ajax({url: "/Users/meerapatil/JoTA/firstscraper/test.py", success: function(){
-            $("#div1").html("worked??");
-        }});
-    });
-});
+  $(document).ready(function () {
+                    $("#myFirstForm").validate({
+					 submitHandler: function() {
+                                                    $.ajax({
+								                    url:'http://localhost:5000/',
+								                    type: 'GET',
+								                    success: function(){
+                                                            console.log("HEY THERE");
+                                                        }
+							                        });
+                                                }
+                     });
+  });
 </script>
 </head>
 <body>
 
-<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+	<h3> Search your job here </h3>
+	<form  action="" method="GET"  role="form" novalidate="novalidate" class="form-inline" style="position:relative;left:24px;" id="myFirstForm">
+		<div class="form-group">
 
-<button>Get External Content</button>
+			<button  value="Submit" id="submit" class="submit" name="submit">Submit</button>
+			</div>
 
-</body>
+	</form>
+	</body>
 </html>
