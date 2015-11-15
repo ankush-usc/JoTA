@@ -1,4 +1,3 @@
-__author__ = 'divyaindi'
 #!/usr/bin/env python
 
 import sys

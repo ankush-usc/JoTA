@@ -14,7 +14,6 @@ else:
 	dest.write("skill	skill_value	count");
     	
 for filename in glob.glob(os.path.join(path, 'part*')):
-    print filename
     src = open(filename,'r')
 
     for line in src:
