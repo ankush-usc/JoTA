@@ -26,6 +26,17 @@ while "output" not in str(check_for_sleep):
 	
 
 stdin,stdout,stderr = ssh.exec_command('aws s3 cp --recursive s3://jotabucket/output/ output_folder/')
+
+stdin,stdout,stderr = ssh.exec_command('ls')
+check_for_sleep =  stdout.readlines()
+print check_for_sleep
+
+while "output_folder" not in str(check_for_sleep):
+        print check_for_sleep
+        time.sleep(20)
+        stdin,stdout,stderr = ssh.exec_command('ls')
+        check_for_sleep =  stdout.readlines()
+
 print subprocess.Popen("scp -r -i EE542_Oregon_keyPair.pem hadoop@ec2-52-32-237-39.us-west-2.compute.amazonaws.com:./output_folder/ .", shell=True, stdout=subprocess.PIPE).stdout.read()
 
 #subprocess.Popen("python merge.py /Users/ankushhprasad/Documents/JOTA/JoTA/output_folder location")
