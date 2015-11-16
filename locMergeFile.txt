@@ -1,4 +1,0 @@
-location	location_value	count
-Sunnyvale	NetApp::C, file systems::Jun 12::MTS3::<link>##NetApp::C,C++,Kernel Debugging::Jun 11::MTS2::<link>	2
-SanFrancisco	NetApp::C, WAFL basics::Aug 18::MTS3::<link>##DOcker::C, Python, Django::Nov 23::MTS2::<link>	2
-RTP	NetApp::C,Java::Nov 12::MTS1::<link>	1
