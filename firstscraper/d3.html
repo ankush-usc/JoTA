@@ -41,6 +41,15 @@
 <script>
 
 function skillGraph() {
+
+                        $.ajax({
+				            url:'http://localhost:5000/skills',
+				            type: 'GET',
+				            success: function(){
+                                console.log("HEY THERE");
+                            }
+				        });
+
   console.log("hello");
 }
 //Function to upload a file with input for mapper_skill.py
@@ -195,7 +204,7 @@ function createD3(filename, field) {
   }
 
 }
-createD3("finaltest.tsv","location");
+createD3("locMergeFile.tsv","location");
 
 
 </script>
