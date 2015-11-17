@@ -1,3 +1,4 @@
+__author__ = 'divyaindi'
 #!/usr/bin/env python
 
 import sys
@@ -6,13 +7,15 @@ import sys
 for line in sys.stdin:
     # remove leading and trailing whitespace
     line = line.strip()
-    jobs = line.split('##')
+    line = line.split('\t')
+    count = line[2]
+    jobs = line[1].split('##')
     for job in jobs:
         skills = job.split('::')
         skill = skills[2].split(',')
         for s in skill:
             s = s.strip()
-            print '%s\t%s#%s' % (s,job,1)
+            print '%s\t%s::%s#%s' % (s,job,count,1)
 
 
 
