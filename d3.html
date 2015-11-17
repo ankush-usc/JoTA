@@ -39,6 +39,10 @@
 </script>
 
 <script>
+
+function skillGraph() {
+  console.log("hello");
+}
 //Function to upload a file with input for mapper_skill.py
 function showSkills(loc) {
 
@@ -68,16 +72,21 @@ function tableLoc(d) {
       document.write("<tr class='success'>");
 
       while (j < f_len) {
-        document.write("<td>"+fields[j]+"</td>");
-        j = j+1;
+        if (j == 5) {
+          document.write("<td><a href="+fields[j]+">Link</td>");
+          j = j+1;
+        }
+        else {
+          document.write("<td>"+fields[j]+"</td>");
+          j = j+1;
+        }
       }
       document.write("</tr>");
       i = i+1;
     }
     document.write("</table>");
     showSkills(d.location_value);
-    document.write("</body></html>")
-   // document.write("<button onclick = 'skillGrap'>Filter based on skills</button></body></html>");
+    document.write("<button onclick = 'skillGraph()'>Filter based on skills</button></body></html>");
    
 }
 
@@ -181,7 +190,7 @@ function createD3(filename, field) {
   }
 
 }
-createD3("skill_input1.tsv","skill");
+createD3("first_input.tsv","location");
 
 
 </script>
