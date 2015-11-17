@@ -6,6 +6,7 @@ import sys
 
 
 
+
 class IndeedSpider(scrapy.Spider):
     name = "indeed"
     allowed_domains = ["indeed.com"]
@@ -31,9 +32,15 @@ class IndeedSpider(scrapy.Spider):
             indeeditem['summary'] = summary_list[i].xpath('text()').extract()[0]
             indeeditem['date'] = date_list[i].xpath('text()').extract()[0]
             if location_list[i].xpath('span[@itemprop="addressLocality"]/text()').extract():
-                indeeditem['location'] = location_list[i].xpath('span[@itemprop="addressLocality"]/text()').extract()[0]
+                loc = location_list[i].xpath('span[@itemprop="addressLocality"]/text()').extract()[0]
             else:
-                indeeditem['location'] = location_list[i].xpath('text()').extract()[0]
+                loc = location_list[i].xpath('text()').extract()[0]
+
+            if len(loc.split(',')) > 1:
+                indeeditem['location'] = loc.split(',')[1].split()[0]
+            else:
+                indeeditem['location'] = loc
+
             indeeditem['joblink'] = jobTitle_list.xpath('@href').extract()[0]
             indeeditem['jobtitle'] = jobTitle_list.xpath('@title').extract()[0]
             summary="C"
@@ -71,7 +78,7 @@ class IndeedSpider(scrapy.Spider):
                 print nextlink
         return scrapy.http.Request(nextlink, callback=self.parse)
 
-    file = open("jobscloud.txt", "w")
+
 
 
 
@@ -90,6 +97,7 @@ class IndeedSpider(scrapy.Spider):
     finally:
         if con:
             con.close()
+
 
 
 
