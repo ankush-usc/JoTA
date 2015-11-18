@@ -11,7 +11,7 @@ if (field == "location"):
 	dest.write("location	location_value	count\n")
 else:
 	dest = open('skillMergeFile.tsv','w')
-	dest.write("skill	skill_value	count");
+	dest.write("skill	skill_value	count\n");
     	
 for filename in glob.glob(os.path.join(path, 'part*')):
     print filename

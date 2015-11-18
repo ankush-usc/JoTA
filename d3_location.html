@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-
 .bar {
   fill: steelblue;
 }
-
 .bar:hover {
   fill: brown;
+  cursor: hand; cursor:pointer;
 }
-
 .axis {
   font: 10px sans-serif;
 }
-
 .axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
-
 .x.axis path {
   display: none;
 }
-
 </style>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -39,11 +34,28 @@
 </script>
 
 <script>
+// Get field type from the URL
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+  vars[key] = value;
+  });
+  return vars;
+}
+function skillGraph() {
+     $.ajax({
+				            url:'http://localhost:5000/skills',
+				            type: 'GET',
+				            success: function(){
+                                console.log("HEY THERE");
+                            }
+				        });
+  console.log("hello");
+}
 //Function to upload a file with input for mapper_skill.py
 function showSkills(loc) {
-
   var bucket = new AWS.S3({params: {Bucket: 'jotabucket'}});
-  var params = {Key: 'data.txt', Body: loc};
+  var params = {Key: 'd3.txt', Body: loc};
   bucket.upload(params, function (err, data) {
       if (err) {
         console.log('ERROR');
@@ -54,96 +66,149 @@ function showSkills(loc) {
     });
 }
         
-// Function to extract jobs and display in a tabular format.
-function save_content_to_file(d) {
+// Function to extract jobs based on "LOCATION" and display in a tabular format.
+function tableLoc(d) {
    
     var jobs = d.location_value.split("##");
     var len = jobs.length;
     var i = 0;
-    document.write("<html><head><title>Bootstrap Example</title><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'></head><div class='container'><h2 align='center'>Listings based on Location</h2><table class='table'><thead><tr class = 'warning'><th>Company</th><th>Skills</th><th>Day since posting</th><th>Position</th><th>Link to website</th></tr></thead><tbody>");
+    document.write("<html><head><title>Bootstrap Example</title><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'></head><div class='container'><h2 align='center'>Listings based on Location</h2><button style ='float:right;' onclick = 'skillGraph()'>Filter based on skills</button><button style='float:left;'><a href = 'http://localhost:8888/d3.html?field=location'>Back</a></button>");
+    document.write("<p></p>");
+    document.write("<p><table class='table'><thead><tr class = 'warning'><th>Company</th><th>Skills</th><th>Day since posting</th><th>Position</th><th>Link to website</th></tr></thead><tbody>");
     while (i < len) {
       fields = jobs[i].split("::");
       var f_len = fields.length;
       var j = 1;
       document.write("<tr class='success'>");
-
       while (j < f_len) {
-        document.write("<td>"+fields[j]+"</td>");
-        j = j+1;
+        if (j == 5) {
+          document.write("<td><a href="+fields[j]+">Link</td>");
+          j = j+1;
+        }
+        else {
+          document.write("<td>"+fields[j]+"</td>");
+          j = j+1;
+        }
+      }
+      document.write("</tr>");
+      i = i+1;
+    }
+    document.write("</table></p>");
+    showSkills(d.location_value);
+    //document.write("<button onclick = 'skillGraph()'>Filter based on skills</button></body></html>");
+   
+}
+// Function to extract jobs based on "SKILLS" and display in a tabular format.
+function tableSkill(d) {
+   
+    var jobs = d.skill_value.split("##");
+    var len = jobs.length;
+    var i = 0;
+    document.write("<html><head><title>Bootstrap Example</title><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'></head><div class='container'><h2 align='center'>Listings based on Skills</h2><button style ='float:right;' onclick = 'skillGraph()'>Find Best Match</button><button style='float:left;'><a href = 'http://localhost:8888/d3.html?field=skill'>Back</a></button><table class='table'><thead><tr class = 'warning'><th>Location</th><th>Company</th><th>Day since posting</th><th>Position</th><th>Link to website</th></tr></thead><tbody>");
+    while (i < len) {
+      fields = jobs[i].split("::");
+      var f_len = fields.length;
+      var j = 0;
+      document.write("<tr class='success'>");
+       while (j < f_len-1) {
+        if ( j == 2) {
+          j =j + 1;
+        }
+        if (j == 5) {
+          document.write("<td><a href="+fields[j]+">Link</td>");
+          j = j+1;
+        }
+        else {
+          document.write("<td>"+fields[j]+"</td>");
+          j = j+1;
+        }
       }
       document.write("</tr>");
       i = i+1;
     }
     document.write("</table>");
-    showSkills(d.location_value);
+    showSkills(d.skill_value);
     document.write("</body></html>")
-   // document.write("<button onclick = 'skillGrap'>Filter based on skills</button></body></html>");
+    document.write("<button onclick = 'runBestMatch()'>Find Best Match</button></body></html>");
    
 }
-
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
+function createD3(filename, field) {
+  var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 1500 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
-
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10, "%");
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-d3.tsv("new_input.tsv", type, function(error, data) {
-  if (error) throw error;
-
-  x.domain(data.map(function(d) { return d.location; }));
-  y.domain([0, d3.max(data, function(d) { return d.count; })]);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Frequency");
-
-  svg.selectAll(".bar")
-      .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.location); })
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.count); })
-      .attr("height", function(d) { return height - y(d.count); })
-    //  .on("click", function(d){ var x = d.location_value; var res = x.split("##");console.log(res[0]+ "\n" +res[1]);});
-      .on("click", function(d){save_content_to_file(d); });
-     
-});
-
-function type(d) {
-  d.count = +d.count;
-  return d;
+  var x = d3.scale.ordinal()
+      .rangeRoundBands([0, width], .1);
+  var y = d3.scale.linear()
+      .range([height, 0]);
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .ticks(10, "%");
+  var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  d3.tsv(filename, type, function(error, data) {
+    if (error) throw error;
+    if (field == "location") {
+      console.log("entered");
+      x.domain(data.map(function(d) { return d.location; }));
+      y.domain([0, d3.max(data, function(d) { return d.count; })]);
+    }
+   
+    if (field == "skill") {
+      console.log("skill");
+      x.domain(data.map(function(d) { return d.skill; }));
+      y.domain([0, d3.max(data, function(d) { return d.count; })]);
+    }
+     svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .selectAll("text")  
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-65)" );
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Frequency");
+    svg.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { if(field == "location") { console.log("entered1");return x(d.location); } return x(d.skill);})
+        .attr("width", x.rangeBand())
+        .attr("y", function(d) { return y(d.count); })
+        .attr("height", function(d) { return height - y(d.count); })
+      //  .on("click", function(d){ var x = d.location_value; var res = x.split("##");console.log(res[0]+ "\n" +res[1]);});
+        .on("click", function(d){if(field == "location") {tableLoc(d); } else {tableSkill(d);}});
+       
+  });
+  function type(d) {
+    d.count = +d.count;
+    return d;
+  }
 }
-
-
+var field_type = getUrlVars()['field'];
+if (field_type == 'location') {
+  createD3("locMergeFile.tsv","location");
+}
+else if(field_type == 'skill') {
+  console.log(field_type)
+  createD3("skillMergeFile.tsv","skill")
+}
 </script>
+    
+    
+    
