@@ -1,1 +1,652 @@
-<!DOCTYPE html><html lang="en"><style>#about{font-size:20px;font-family:Lucida Calligraphy;}select {        		padding-top:10px;		padding-left:10px;		    }</style><head>    <meta charset="utf-8">    <meta http-equiv="X-UA-Compatible" content="IE=edge">    <meta name="viewport" content="width=device-width, initial-scale=1">    <meta name="description" content="">    <meta name="author" content="">    <title>JoTA</title>    <!-- Bootstrap Core CSS -->    <link href="css/bootstrap.min.css" rel="stylesheet">    <!-- Custom CSS -->    <link href="css/stylish-portfolio.css" rel="stylesheet">    <!-- Custom Fonts -->    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->    <!--[if lt IE 9]>        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>    <![endif]-->    <script>  function myfunction() {					                         $.ajax({				            url:'http://localhost:5000/',				            type: 'GET',				            success: function(){                                console.log("HEY THERE");                            }				        });                                                                   }</script></head><body onload="myfunction()">    <!-- Navigation -->    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>    <nav id="sidebar-wrapper">        <ul class="sidebar-nav">            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>            <li class="sidebar-brand">                <a href="#top"  onclick = $("#menu-close").click(); >Start Bootstrap</a>            </li>            <li>                <a href="#top" onclick = $("#menu-close").click(); >Home</a>            </li>            <li>                <a href="#about" onclick = $("#menu-close").click(); >About</a>            </li>            <li>                <a href="#services" onclick = $("#menu-close").click(); >Services</a>            </li>            <li>                <a href="#portfolio" onclick = $("#menu-close").click(); >Portfolio</a>            </li>            <li>                <a href="#contact" onclick = $("#menu-close").click(); >Contact</a>            </li>        </ul>    </nav>    <!-- Header -->    <header id="top" class="header">        <div class="text-vertical-center">            <h1>Job Trend Analyzer (JoTA)</h1>            <h3>Your job search begins and ends here</h3>            <br>            <a href="d3.html?field=location" class="btn btn-dark btn-lg">Search based on Location</a>		<br>	<br>            <a href="d3.html?field=skill" class="btn btn-dark btn-lg">Search based on Skills</a>	<br>	<br>	                 <a href="#about" class="btn btn-dark btn-lg">Best Match</a>        </div>    </header>    <!-- About -->    <section id="about" class="about">        <div class="container">            <div class="row">                <div class="col-lg-12 text-center">                    <h3> Skill 1 <select name="skills1" required>						<option value="C">C</option>						<option value="C++">C++</option>						<option value="C#">C#</option>						<option value="JAVA">Java</option>						<option value="PYTHON">Python</option>						<option value="EMBEDDED C">Embedded C</option>						</select> </h3>					<h3> Skill 2 <select name="skills2" required>						<option value="C">C</option>						<option value="C++">C++</option>						<option value="C#">C#</option>						<option value="JAVA">Java</option>						<option value="PYTHON">Python</option>						<option value="EMBEDDED C">Embedded C</option>						</select> </h3>					<h3> Skill 3 <select name="skills3" required>						<option value="C">C</option>						<option value="C++">C++</option>						<option value="C#">C#</option>						<option value="JAVA">Java</option>						<option value="PYTHON">Python</option>						<option value="EMBEDDED C">Embedded C</option>						</select> </h3>					<h3> Location <select name="location" required>						<option value="sanfrancisco">San Francisco</option>						<option value="newhampshire">New Hampshire</option>						<option value="losangeles">Los Angeles</option>						<option value="sanmateo">San Mateo</option>						<option value="santaclara">Santa Clara</option>						<option value="Pittsburg">Pittsburg</option>						<option value="santamonica">Santa Monica</option>						<option value="pasedina">Pasedina</option>						<option value="sanjose">San Jose</option>						<option value="hillsbro">Hillsbro</option>						<option value="oakland">Oakland</option>						<option value="seattle">Seattle</option>						<option value="cincinnati">Cincinnati</option>						<option value="glendale">Glendale</option>						<option value="milford">Mil Ford</option>						<option value="sandiego">San Diego</option>						<option value="boston">Boston</option>						<option value="blacksburg">Blacksburg</option>							</select> </h3>								<a href="helloworld.html" class="btn btn-dark btn-lg" style="background:rgb(51,122,183);color:white; border-radius:5px;margin-top:25px">Submit</a>                                    </div>            </div>            <!-- /.row -->        </div>        <!-- /.container -->    </section>    <!-- Services -->    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->    <section id="services" class="services bg-primary">        <div class="container">            <div class="row text-center">                <div class="col-lg-10 col-lg-offset-1">                    <h2>Our Team</h2>                    <hr class="small">                    <div class="row">                        <div class="col-md-2">                            <div class="service-item">                                <span class="fa-stack fa-4x">									<img class="img-portfolio img-responsive" src="img/ankush.jpg">                                                           </span>                                <h4>                                    <strong>Ankush H Prasad</strong>                                </h4>                                <p> ahprasad@usc.edu </p>                                																</a>                            </div>                        </div>												                        <div class="col-md-2">                            <div class="service-item">                                <span class="fa-stack fa-4x">                                <img class="img-portfolio img-responsive" src="img/divya.jpg">                            </span>                                <h4>                                    <strong>Divya Indi</strong>                                </h4>                                <p>indi@usc.edu</p>                                <a href="#"></a>                            </div>                        </div>												<div class="col-md-2">                            <div class="service-item">                                <span class="fa-stack fa-4x">                                <img class="img-portfolio img-responsive" src="img/manasa.jpg">                            </span>                                <h4>                                    <strong>Manasa Kalburgi</strong>                                </h4>                                <p>kalburgi@usc.edu</p>                                <a href="#"></a>                            </div>                        </div>                        <div class="col-md-2">                            <div class="service-item">                                <span class="fa-stack fa-4x">									<img class="img-portfolio img-responsive" src="img/meera.PNG">                                                            </span>                                <h4>                                    <strong>Meera Patil</strong>                                </h4>                                <p>meeravep@usc.edu</p>                                <a href="#"></a>                            </div>                        </div>                        <div class="col-md-2">                            <div class="service-item">                                <span class="fa-stack fa-4x">                                <img class="img-portfolio img-responsive" src="img/ridhima.jpg">                            </span>                                <h4>                                    <strong>Ridhima Manjrekar</strong>                                </h4>                                <p>rmanjrek@usc.edu</p>                                <a href="#"></a>                            </div>                        </div>                    </div>                    <!-- /.row (nested) -->                </div>                <!-- /.col-lg-10 -->            </div>            <!-- /.row -->        </div>        <!-- /.container -->    </section>        <!-- Portfolio -->       <!-- Footer -->    <footer>        <div class="container">            <div class="row">                <div class="col-lg-10 col-lg-offset-1 text-center">                    <h4><strong>EE 542</strong>                    </h4>                                                            <br>                    <ul class="list-inline">                        <img class="img-portfolio img-responsive" src="usc.png">                    </ul>                    <hr class="small">                    <p class="text-muted">TEAM 10: JoTA </p>                </div>            </div>        </div>    </footer>    <!-- jQuery -->    <script src="js/jquery.js"></script>    <!-- Bootstrap Core JavaScript -->    <script src="js/bootstrap.min.js"></script>    <!-- Custom Theme JavaScript -->    <script>    // Closes the sidebar menu    $("#menu-close").click(function(e) {        e.preventDefault();        $("#sidebar-wrapper").toggleClass("active");    });    // Opens the sidebar menu    $("#menu-toggle").click(function(e) {        e.preventDefault();        $("#sidebar-wrapper").toggleClass("active");    });    // Scrolls to the selected menu item on the page    $(function() {        $('a[href*=#]:not([href=#])').click(function() {            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {                var target = $(this.hash);                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');                if (target.length) {                    $('html,body').animate({                        scrollTop: target.offset().top                    }, 1000);                    return false;                }            }        });    });    </script></body></html>
+<!DOCTYPE html>
+
+<html lang="en">
+<style>
+#about{
+font-size:15px;
+font-family:Hoefler Text Ornaments;
+}
+select {
+        
+		padding-top:10px;
+		padding-left:10px;
+		
+    }
+</style>
+
+<head>
+
+
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+
+    <meta name="author" content="">
+
+
+
+    <title>JoTA</title>
+
+
+
+    <!-- Bootstrap Core CSS -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <!-- Custom CSS -->
+
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+
+
+    <!-- Custom Fonts -->
+
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+
+    
+
+<script>
+
+  function myfunction() {
+
+					 
+
+                        $.ajax({
+
+				            url:'http://localhost:5000/',
+
+				            type: 'GET',
+
+				            success: function(){
+
+                                console.log("HEY THERE");
+
+                            }
+
+				        });
+
+                                                
+
+                   }
+
+</script>
+
+
+
+</head>
+
+
+
+<body onload="myfunction()">
+
+
+
+    <!-- Navigation -->
+
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+
+    <nav id="sidebar-wrapper">
+
+        <ul class="sidebar-nav">
+
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+
+            <li class="sidebar-brand">
+
+                <a href="#top"  onclick = $("#menu-close").click(); >Start Bootstrap</a>
+
+            </li>
+
+            <li>
+
+                <a href="#top" onclick = $("#menu-close").click(); >Home</a>
+
+            </li>
+
+            <li>
+
+                <a href="#about" onclick = $("#menu-close").click(); >About</a>
+
+            </li>
+
+            <li>
+
+                <a href="#services" onclick = $("#menu-close").click(); >Services</a>
+
+            </li>
+
+            <li>
+
+                <a href="#portfolio" onclick = $("#menu-close").click(); >Portfolio</a>
+
+            </li>
+
+            <li>
+
+                <a href="#contact" onclick = $("#menu-close").click(); >Contact</a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- Header -->
+
+    <header id="top" class="header">
+
+        <div class="text-vertical-center">
+
+            <h1>Job Trend Analyzer (JoTA)</h1>
+
+            <h3>Your job search begins and ends here</h3>
+
+            <br>
+
+            <a href="d3.html?field=location" class="btn btn-dark btn-lg">Search based on Location</a>
+
+		<br>
+
+	<br>
+
+            <a href="d3.html?field=skill" class="btn btn-dark btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;Search based on Skills&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+	<br>
+
+	<br>
+
+	     
+
+            <a href="#about" class="btn btn-dark btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Best Match &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- About -->
+
+    <section id="about" class="about">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-14 text-center">
+
+
+                    <h3> Skill 1 &nbsp;&nbsp;&nbsp;&nbsp;  <select name="skills1" required>
+
+						<option value=""></option>
+                        
+                        <option value="C">C</option>
+
+						<option value="C++">C++</option>
+
+						<option value="C#">C#</option>
+
+						<option value="JAVA">Java</option>
+
+						<option value="PYTHON">Python</option>
+
+						<option value="EMBEDDED C">Embedded C &nbsp;&nbsp;</option>
+
+						</select> </h3>
+
+					<h3> Skill 2 &nbsp;&nbsp;&nbsp;&nbsp;   <select name="skills2" required>
+                        
+                        <option value=""></option>
+                        
+						<option value="C">C</option>
+
+						<option value="C++">C++</option>
+
+						<option value="C#">C#</option>
+
+						<option value="JAVA">Java</option>
+
+						<option value="PYTHON">Python</option>
+
+						<option value="EMBEDDED C">Embedded C &nbsp;&nbsp;</option>
+
+						</select> </h3>
+
+					<h3> Skill 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="skills3" required>
+
+						<option value=""></option>
+                        
+                        <option value="C">C</option>
+
+						<option value="C++">C++</option>
+
+						<option value="C#">C#</option>
+
+						<option value="JAVA">Java</option>
+
+						<option value="PYTHON">Python</option>
+
+						<option value="EMBEDDED C">Embedded C &nbsp;&nbsp;</option>
+
+						</select> </h3>
+
+					<h3> Location&nbsp;&nbsp;&nbsp;<select name="location" required>
+                        
+                        <option value=""></option>
+
+						<option value="AL">Alabama</option>
+	                    <option value="AK">Alaska</option>
+	                    <option value="AZ">Arizona</option>
+	                    <option value="AR">Arkansas</option>
+	                    <option value="CA">California</option>
+	                    <option value="CO">Colorado</option>
+	                    <option value="CT">Connecticut</option>
+	                    <option value="DE">Delaware</option>
+	                    <option value="FL">Florida</option>
+	                    <option value="GA">Georgia</option>
+	                    <option value="HI">Hawaii</option>
+	                    <option value="ID">Idaho</option>
+	                    <option value="IL">Illinois</option>
+	                    <option value="IN">Indiana</option>
+	                    <option value="IA">Iowa</option>
+	                    <option value="KS">Kansas</option>
+	                    <option value="KY">Kentucky</option>
+	                    <option value="LA">Louisiana</option>
+	                    <option value="ME">Maine</option>
+	                    <option value="MD">Maryland</option>
+	                    <option value="MA">Massachusetts</option>
+	                    <option value="MI">Michigan</option>
+	                    <option value="MN">Minnesota</option>
+	                    <option value="MS">Mississippi</option>
+	                    <option value="MO">Missouri</option>
+	                    <option value="MT">Montana</option>
+	                    <option value="NE">Nebraska</option>
+	                    <option value="NV">Nevada</option>
+	                    <option value="NH">New Hampshire</option>
+	                    <option value="NJ">New Jersey</option>
+	                    <option value="NM">New Mexico</option>
+	                    <option value="NY">New York</option>
+	                    <option value="NC">North Carolina</option>
+	                    <option value="ND">North Dakota</option>
+	                    <option value="OH">Ohio</option>
+	                    <option value="OK">Oklahoma</option>
+	                    <option value="OR">Oregon</option>
+	                    <option value="PA">Pennsylvania</option>
+	                    <option value="RI">Rhode Island</option>
+	                    <option value="SC">South Carolina</option>
+	                    <option value="SD">South Dakota</option>
+	                    <option value="TN">Tennessee</option>
+	                    <option value="TX">Texas</option>
+	                    <option value="UT">Utah</option>
+	                    <option value="VT">Vermont</option>
+	                    <option value="VA">Virginia</option>
+	                    <option value="WA">Washington</option>
+	                    <option value="WV">West Virginia</option>
+	                    <option value="WI">Wisconsin</option>
+	                    <option value="WY">Wyoming</option>
+							</select> </h3>	
+
+
+
+
+							<a href="helloworld.html" class="btn btn-primary " style="background:rgb(51,122,183);color:white; border-radius:5px;margin-top:25px">SUBMIT</a>
+
+                    
+
+                </div>
+
+            </div>
+
+            <!-- /.row -->
+
+        </div>
+
+        <!-- /.container -->
+
+    </section>
+
+
+
+    <!-- Services -->
+
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+
+    <section id="services" class="services bg-primary">
+
+        <div class="container">
+
+            <div class="row text-center">
+
+                <div class="col-lg-10 col-lg-offset-1">
+
+                    <h2>Our Team</h2>
+
+                    <hr class="small">
+
+                    <div class="row">
+                        
+                         <div class="col-md-1">
+
+                            <div class="service-item">
+
+                                <span class="fa-stack fa-4x">
+									
+                               
+
+                                </span>
+
+                                <h4>
+
+                                   
+
+                                </h4>
+
+                              
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="col-md-2">
+
+                            <div class="service-item">
+
+                                <span class="fa-stack fa-4x">
+									<img class="img-portfolio img-responsive" style="border-radius: 50%;" src="img/ankush.jpg">
+                               
+
+                            </span>
+
+                                <h4>
+
+                                    <strong>Ankush H Prasad</strong>
+
+                                </h4>
+
+                                <p> ahprasad@usc.edu </p>
+
+                                
+								
+								</a>
+
+                            </div>
+
+                        </div>
+
+						
+
+						
+                        <div class="col-md-2">
+
+                            <div class="service-item">
+
+                                <span class="fa-stack fa-4x">
+
+                                <img class="img-portfolio img-responsive" style="border-radius: 50%;"src="img/divya.jpg">
+
+                            </span>
+
+                                <h4>
+
+                                    <strong>Divya Indi</strong>
+
+                                </h4>
+
+                                <p>indi@usc.edu</p>
+
+                                <a href="#"></a>
+
+                            </div>
+
+                        </div>
+
+						
+						<div class="col-md-2">
+
+                            <div class="service-item">
+
+                                <span class="fa-stack fa-4x">
+
+                                <img class="img-portfolio img-responsive" style="border-radius: 50%;" src="img/manasa.jpg">
+
+                            </span>
+
+                                <h4>
+
+                                    <strong>Manasa Kalburgi</strong>
+
+                                </h4>
+
+                                <p>kalburgi@usc.edu</p>
+
+                                <a href="#"></a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-2">
+
+                            <div class="service-item">
+
+                                <span class="fa-stack fa-4x">
+									<img class="img-portfolio img-responsive" style="border-radius:50%;" src="img/meera.PNG">
+                                
+                            </span>
+
+                                <h4>
+
+                                    <strong>Meera Patil</strong>
+
+                                </h4>
+
+                                <p>meeravep@usc.edu</p>
+
+                                <a href="#"></a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-2">
+
+                            <div class="service-item">
+
+                                <span class="fa-stack fa-4x">
+
+                                <img class="img-portfolio img-responsive" style="border-radius: 50%;" src="img/ridhima.jpg">
+
+                            </span>
+
+                                <h4>
+
+                                    <strong>Ridhima Manjrekar</strong>
+
+                                </h4>
+
+                                <p>rmanjrek@usc.edu</p>
+
+                                <a href="#"></a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- /.row (nested) -->
+
+                </div>
+
+                <!-- /.col-lg-10 -->
+
+            </div>
+
+            <!-- /.row -->
+
+        </div>
+
+        <!-- /.container -->
+
+    </section>
+
+
+
+    
+
+
+
+    <!-- Portfolio -->
+
+   
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+
+                    <h4><strong>EE 542 - Internet and Cloud Computing</strong>
+
+                    </h4>
+
+                    
+
+                    
+
+                    <br>
+
+                    <ul class="list-inline">
+
+                        <img class="img-portfolio img-responsive" src="usc.png">
+
+                    </ul>
+
+                    <hr class="small">
+
+                    <p class="text-muted">TEAM 10: JoTA </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- jQuery -->
+
+    <script src="js/jquery.js"></script>
+
+
+
+    <!-- Bootstrap Core JavaScript -->
+
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+    <!-- Custom Theme JavaScript -->
+
+    <script>
+
+    // Closes the sidebar menu
+
+    $("#menu-close").click(function(e) {
+
+        e.preventDefault();
+
+        $("#sidebar-wrapper").toggleClass("active");
+
+    });
+
+
+
+    // Opens the sidebar menu
+
+    $("#menu-toggle").click(function(e) {
+
+        e.preventDefault();
+
+        $("#sidebar-wrapper").toggleClass("active");
+
+    });
+
+
+
+    // Scrolls to the selected menu item on the page
+
+    $(function() {
+
+        $('a[href*=#]:not([href=#])').click(function() {
+
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+
+
+                var target = $(this.hash);
+
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
+                if (target.length) {
+
+                    $('html,body').animate({
+
+                        scrollTop: target.offset().top
+
+                    }, 1000);
+
+                    return false;
+
+                }
+
+            }
+
+        });
+
+    });
+
+    </script>
+
+
+
+</body>
+
+
+
+</html>
+
